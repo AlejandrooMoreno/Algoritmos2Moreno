@@ -2,7 +2,7 @@ def mitadmenores(L):
     if len(L) > 2:
         L.sort()
         tamaño = len(L)
-        if len(L) % 2 == 0:
+        if tamaño % 2 == 0:
             element = L[tamaño - 2]
             L.pop(tamaño - 2)
         else:

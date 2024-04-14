@@ -1,16 +1,12 @@
 def ContieneSuma(A,n):
     izquierda = 0
-    derecha = izquierda + 1
-    while izquierda < len(A):
-        if A[izquierda] >= n:
+    derecha = len(A) - 1
+    A.sort()
+    while izquierda != derecha:
+        if A[izquierda] + A[derecha] == n:
+            return True
+        elif A[izquierda] + A[derecha] < n:
             izquierda += 1
-            derecha = izquierda + 1
         else:
-            while derecha < len(A):
-                if A[izquierda] + A[derecha] == n:
-                    return True
-                else:
-                    derecha += 1
-            izquierda += 1
-            derecha = izquierda + 1
+            derecha -= 1
     return False
