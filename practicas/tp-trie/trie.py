@@ -41,3 +41,22 @@ def insertR(i, node, element):
         else:
             newnode.isEndOfWord = True
 
+def search(T,element):
+    if T.root == None:
+        return False
+    else:
+        return searchR(0, T.root, element)
+
+def searchR(i, node, element):
+    if node.children == None:
+        return None
+    else:
+        for x in range(0, len(node.children)):
+            if node.children[x].key == element[i]:
+                if i + 1 < len(element):
+                    return searchR(i + 1, node.children[x], element)
+                elif node.children[x].isEndOfWord == True:
+                    return True
+                else:
+                    return False
+        return False
