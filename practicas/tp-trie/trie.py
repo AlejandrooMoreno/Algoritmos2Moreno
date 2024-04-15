@@ -49,7 +49,7 @@ def search(T,element):
 
 def searchR(i, node, element):
     if node.children == None:
-        return None
+        return False
     else:
         for x in range(0, len(node.children)):
             if node.children[x].key == element[i]:
@@ -60,3 +60,40 @@ def searchR(i, node, element):
                 else:
                     return False
         return False
+
+def delete(T, element):
+    if T.root == None:
+        return False
+    else:
+        eliminado, tieneHijos = deleteR(0, T.root, element)
+        return eliminado
+
+def deleteR(i, node, element):
+    if node.children == None:
+        return False, None
+    else:
+        for x in range(0, len(node.children)):
+            if node.children[x].key == element[i]:
+                if i + 1 < len(element):
+                    eliminado, tieneHijos = deleteR(i + 1, node.children[x], element)
+                    if eliminado == True:
+                        if tieneHijos == False:
+                            if node.children[x].isEndOfWord == True:
+                                return True, True
+                            else:
+                                node.children.pop(x)
+                                return True, False
+                        else:
+                            return eliminado, tieneHijos
+                    else:
+                        return eliminado, tieneHijos
+                elif node.children[x].isEndOfWord == True:
+                    if node.children[x].children != None:
+                        node.children[x].isEndOfWord = False
+                        return True, True
+                    else:
+                        node.children.pop(x)
+                        return True, False    
+                else:
+                    return False, None
+        return False, None
