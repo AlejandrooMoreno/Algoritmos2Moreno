@@ -30,11 +30,3 @@ def prefijoR(i, p, n, element, node):
           return
       else:
         prefijoR(i + 1, p, n, element + node.children[x].key, node.children[x])
-
-
-ale = Trie()
-insert(ale, "alejandro")
-insert(ale, "ale")
-insert(ale, "alekanadr")
-insert(ale, "manuelita")
-prefijocomun(ale, "ale", 3)
