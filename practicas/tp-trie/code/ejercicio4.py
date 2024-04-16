@@ -11,7 +11,7 @@ def prefijoR(i, p, n, element, node):
     return
   elif i < len(p):
     for x in range(0, len(node.children)):
-      if node.children[x] == p[i]:
+      if node.children[x].key == p[i]:
         element = element + p[i]
         if i + 1 < n:
           return prefijoR(i + 1, p, n, element, node.children[x])
