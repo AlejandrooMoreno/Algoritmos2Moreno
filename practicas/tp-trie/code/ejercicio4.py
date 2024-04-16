@@ -1,11 +1,4 @@
-class Trie:
-	root = None
-
-class TrieNode:
-    parent = None
-    children = None   
-    key = None
-    isEndOfWord = False
+from trie import*
 
 def prefijocomun(T, p, n):
   if T.root == None:
@@ -22,7 +15,7 @@ def prefijoR(i, p, n, element, node):
         element = element + p[i]
         if i + 1 < n:
           return prefijoR(i + 1, p, n, element, node.children[x])
-        elif node.children[x].isEndOfWord == True:
+        elif node.children[x].isEndOfWord == True and i + 1 == len(p):
           print(element)
           return
         else:
@@ -37,8 +30,11 @@ def prefijoR(i, p, n, element, node):
           return
       else:
         prefijoR(i + 1, p, n, element + node.children[x].key, node.children[x])
-        
 
-ale = ""
-ale = ale + "jandro"
-print(ale)
+
+ale = Trie()
+insert(ale, "alejandro")
+insert(ale, "ale")
+insert(ale, "alekanadr")
+insert(ale, "manuelita")
+prefijocomun(ale, "ale", 3)
