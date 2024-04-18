@@ -97,3 +97,31 @@ def deleteR(i, node, element):
                 else:
                     return False, None
         return False, None
+
+def autoCompletar(T, cadena):
+    if T.root == None:
+        return ""
+    else:
+        return encontrarcadena(0, T.root, cadena)
+
+def encontrarcadena(i, node, cadena):
+    if node.children == None:
+        return ""
+    else:
+        for x in range(0, len(node.children)):
+            if node.children[x].key == cadena[i]:
+                if i + 1 == len(cadena):
+                    return restante(node.children[x], "")
+                else:
+                    return encontrarcadena(i + 1, node.children[x], cadena)
+        return ""
+
+def restante(node, element):
+    if node.children == None:
+        return element
+    elif len(node.children) > 1:
+        return element
+    elif node.children[0].isEndOfWord == False:
+        return restante(node.children[0], element + node.children[0].key)
+    else:
+        return element + node.children[0].key
