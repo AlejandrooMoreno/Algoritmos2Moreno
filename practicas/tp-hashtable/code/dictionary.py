@@ -36,7 +36,3 @@ def delete(D,key):
       D[position].pop(x)
       return D
   return D
-
-ale = dictionary()
-insert(ale, 9, 3)
-print(search(ale, 10))
