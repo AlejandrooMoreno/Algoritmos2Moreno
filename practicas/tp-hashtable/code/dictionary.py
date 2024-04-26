@@ -44,6 +44,9 @@ def delete(D,key):
   if D[position] != None:
     for x in range(0, len(D[position])):
       if D[position][x].key == key:
-        D[position].pop(x)
+        if len(D[position]) == 1:
+          D[position] = None
+        else:
+          D[position].pop(x)
         return D
   return D
