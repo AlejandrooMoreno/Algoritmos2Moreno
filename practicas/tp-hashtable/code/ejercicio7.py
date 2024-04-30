@@ -7,6 +7,8 @@ def comprimir_cadena(palabra):
       repetido += 1
     else:
       palabra_comprimida = palabra_comprimida + str(repetido) + palabra[x]
+      if len(palabra_comprimida) >= len(palabra):
+        return palabra
       ultima_letra = palabra[x]
       repetido = 1
   palabra_comprimida = palabra_comprimida + str(repetido)
