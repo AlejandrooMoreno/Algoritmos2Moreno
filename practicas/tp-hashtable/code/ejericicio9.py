@@ -1,18 +1,24 @@
 class dictionary:
-    def __init__(self, size):
-        self.size = size
-        self.array = [None] * size
+    def __init__(self):
+        self.size = 50
+        self.elements = [None] * self.size
+
+    def __getitem__(self, key):
+        return self.elements[key]
+
+    def __setitem__(self, key, value):
+        self.elements[key] = value
 
     def __str__(self):
-        return str(self.array)
+        return str(self.elements)
 
 class dicNode:
   value = None
   key = None
 
-def H(k, tamaño):
+def H(k):
   A = (5^(1/2) - 1) / 2
-  return math.floor(tamaño * (k * A - math.floor(k * A)))
+  return math.floor(50 * (k * A - math.floor(k * A)))
 
 def insert(D, key, value):
   newnode = dicNode()
@@ -45,3 +51,14 @@ def delete(D,key):
           D[position].pop(x)
         return D
   return D
+
+def subconjunto(S, T):
+  D = dictionary()
+  if len(S) > len(T):
+    return False
+  for x in range(0, len(T)):
+    insert(D, T[x], T[x])
+  for x in range(0, len(S)):
+    if search(D, S[x]) == None:
+      return False
+  return True
