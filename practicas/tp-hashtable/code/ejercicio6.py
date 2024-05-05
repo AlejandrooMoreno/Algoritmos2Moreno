@@ -7,4 +7,4 @@ def h(codigo_postal):
   for x in range(5, 8):
     key = ord(codigo_postal(x))
   A = (5^(1/2) - 1) / 2
-  return math.floor(5314410000 * (key * A - math.floor(key * A)))
+  return math.floor(1328602500 * (key * A - math.floor(key * A)))
